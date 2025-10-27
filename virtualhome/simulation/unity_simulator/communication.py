@@ -146,6 +146,9 @@ class UnityLauncher(object):
                 
                 
         elif platform == "windows" or platform == 'win32':
+            # On Windows, env being {} causes the subprocess to fail to start with [WinError 87]
+            env = None
+
             candidates = glob.glob(os.path.join(cwd, file_name)  + ".exe")
             
             if len(candidates) > 0:
